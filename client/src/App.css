@@ -1,0 +1,12 @@
+.box {
+    
+display: flex;
+flex-direction: row;
+justify-content: space-around;
+margin-top: 50px;
+
+}
+body {
+    background: rgb(242, 242, 242);
+    overflow-x: hidden;
+}

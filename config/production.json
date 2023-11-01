@@ -1,0 +1,7 @@
+{
+    "port": 5000,
+    "jwtSecret": "naira app",
+    "mongoUrl": "mongodb+srv://Naira:armeniaok@cluster0.rg1sufb.mongodb.net/?retryWrites=true&w=majority",
+    "baseUrl": "http://localhost:5000",
+
+}

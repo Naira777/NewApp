@@ -1,0 +1,138 @@
+.header {
+    font-size: 30px;
+    
+    margin-top: 80px;  
+    align-self: center;
+    margin-bottom: 100px;
+    color:rgb(95, 93, 93);
+}
+.header1 {
+    font-size: 30px;
+    color: brown;
+    font-weight: 500;
+    text-align: center;
+    margin-top:120px;
+}
+.box {
+  display: flex;
+  flex-direction: row;
+ align-items: flex-start;
+ justify-content: center;
+
+
+}
+.article {
+ 
+  width: 50vw;
+  min-width: 400px;
+  margin-left:20px;
+  
+  }
+  .img {
+ 
+    width: 30vw;
+    min-width: 400px;
+    object-fit: cover;
+    margin-bottom: 70px;
+    
+    }
+
+.button {
+    width: 90px;
+    height: 33px;
+    background-color: brown;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    margin-top:25px;
+}
+.button:hover {
+      background-color: rgb(243, 94, 94);
+}
+
+.container {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+    margin-top: 60px;
+    margin-bottom: 150px;
+    border-bottom: 1px solid rgb(186, 182, 182);
+    margin-left: 25px;
+    margin-right: 25px;
+}
+.button {
+    background-color: brown;
+    color: rgb(241, 233, 233);
+    font-size: 20px;
+    width: 200px;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    align-self: center;
+    margin-bottom: 80px;
+  }
+  .button:hover {
+    background-color: rgb(206, 47, 47);
+  }
+  .box1 {
+    display: flex;
+    justify-content: center;
+  }
+
+@media screen and (max-width: 1000px) {
+
+    .article {
+ 
+        width: 80vw;
+        min-width: 300px;
+        margin-left:25px;
+        }
+        .box {
+            display: flex;
+            flex-direction: column;
+           align-items: center;
+           justify-content: center;      
+             width: 900vw;
+             margin-left:0px;
+          
+          }
+}
+
+@media screen and (max-width: 800px) {
+
+
+      .container {
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items:center;
+        margin-top: 60px;
+        margin-bottom: 150px;
+        border-bottom: 1px solid rgb(186, 182, 182);
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+}
+@media screen and (max-width: 560px) {
+    .article {
+ 
+        width: 80vw;
+        min-width: 80vw;
+       
+        
+        }
+        .img {
+       
+        min-width: 80vw;
+          min-width: 80vw;
+          object-fit: cover;
+          margin-bottom: 30px;
+         
+          
+          }
+
+}
