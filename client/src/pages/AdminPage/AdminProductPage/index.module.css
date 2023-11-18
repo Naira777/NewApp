@@ -133,3 +133,12 @@
   display: flex;
   justify-content: center;
 }
+.log{
+  float:right;
+  margin-right: 50px;
+  color: grey;
+  cursor: pointer;
+  padding: 5px;
+  box-shadow: 5px 5px 2px 5px rgba(152, 157, 161, 0.98);
+
+}

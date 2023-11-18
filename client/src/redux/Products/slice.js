@@ -6,13 +6,17 @@ const ProductSlice = createSlice({
   initialState: {
    products: [], 
    language: '',
+   isLogin: false,
    
   },
 
   reducers: {
     langChange (state, action) {
       state.language = action.payload;
-    }
+    },
+        logIn (state, action) {
+      state.isLogin = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -26,3 +30,4 @@ const ProductSlice = createSlice({
 
 export default ProductSlice;
 export const {langChange} = ProductSlice.actions;
+export const {logIn} = ProductSlice.actions;

@@ -5,6 +5,8 @@ import { data } from "../../../data";
 import { getIds } from "../../../helper";
 import { useSelector, useDispatch } from "react-redux";
 import { API } from "../../../redux/API";
+import { logIn } from "../../../redux/Products/slice";
+import { useNavigate } from "react-router-dom";
 
 function AdminProductPage() {
   const [product, setProduct] = useState(null);
@@ -22,7 +24,7 @@ function AdminProductPage() {
   const { products } = useSelector((state) => state.products);
   const [items, setItems]= useState([])
   const dispatch = useDispatch();
-
+const navigate= useNavigate()
   useEffect(() => {
     dispatch(API.getProducts());
     setCount(9);
@@ -103,9 +105,21 @@ function AdminProductPage() {
     handleChange: handleChange,
   };
 
+
+  const handleClickLogOut =()=> {
+
+ 
+    localStorage.clear()
+    dispatch(logIn(false))
+    navigate('/admin')
+    
+  }
+
+  
   return (
     <div>
       <div className={s.box}>
+      <p className={s.log} onClick={handleClickLogOut}>Log out</p>
         <p className={s.header}> Add Product</p>
         <div className={s.select}>
           <FormSelect {...configFilters} />

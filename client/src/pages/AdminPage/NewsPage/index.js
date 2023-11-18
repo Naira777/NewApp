@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import s from "./index.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import { API } from "../../../redux/API";
+import { useNavigate } from "react-router-dom";
+import { logIn } from "../../../redux/Products/slice";
 
 function NewsAdminPage() {
   const [newsImage, setNewsImage] = useState(null);
@@ -15,6 +17,7 @@ function NewsAdminPage() {
   const dispatch = useDispatch();
   const [newArr, setNewArr] = useState([]);
   const [count, setCount] = useState(0);
+  const navigate= useNavigate()
 
 
   useEffect(() => {
@@ -91,9 +94,19 @@ function NewsAdminPage() {
     dispatch(API.getNews());
   };
 
+  const handleClickLogOut =()=> {
+
+ 
+    localStorage.clear()
+    dispatch(logIn(false))
+    navigate('/admin')
+    
+  }
+
   return (
     <div>
       <div className={s.box}>
+      <p className={s.log} onClick={handleClickLogOut}>Log out</p>
         <p className={s.header}> Add a news </p>
 
         <form className={s.form}>

@@ -19,14 +19,32 @@ const NavBar = ({ handleClick1, handleClick2, handleClick3 }) => {
         </NavLink>
       </p>
 
-      <p className={s.link}>
-        <div
-          onClick={handleClick2}
-          style={{ color: "brown", textDecoration: "none", cursor: "pointer" }}
-        >
-          {t("about")}
-        </div>
-      </p>
+      {param == "/" ? (
+        <p className={s.link}>
+          <div
+            onClick={handleClick2}
+            style={{
+              color: "brown",
+              textDecoration: "none",
+              cursor: "pointer",
+            }}
+          >
+            {t("about")}
+          </div>
+        </p>
+      ) : (
+        <p className={s.link}>
+          <div>
+            <NavLink
+              to={"/about"}
+              activeStyle={{ color: "#FCA83C" }}
+              style={{ color: "brown", textDecoration: "none" }}
+            >
+              {t("about")}
+            </NavLink>
+          </div>
+        </p>
+      )}
 
       {param == "/" ? (
         <p className={s.link}>

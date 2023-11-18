@@ -1,58 +1,92 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
-import s from './index.module.css'
+import s from "./index.module.css";
 import Navbar from "./Navbar";
-
+import { useDispatch, useSelector } from "react-redux";
+import { logIn } from "../../redux/Products/slice";
 
 function App() {
-  const [image, setImage] = useState(null);
-  const [allImage, setAllImage] = useState(null);
+  const [login, setLogin] = useState(null);
+  const [password, setPassword] = useState(null);
+  const [mode, setMode]=useState(false)
+  const [error, setError]=useState(false)
+  const { isLogin } = useSelector((state) => state.products);
 
-  useEffect(() => {
-    getImage();
-  }, []);
+const dispatch= useDispatch()
 
-  const submitImage = async (e) => {
-    e.preventDefault();
+console.log(isLogin)
 
-    const formData = new FormData();
-    formData.append("image", image);
+useEffect(()=>{
 
-    const result = await axios.post(
-      "http://localhost:5000/upload-image",
-      formData,
-      {
-        headers: { "Content-Type": "multipart/form-data" },
-      }
-    );
-   
-  };
+if(mode || ( localStorage.getItem('password') && localStorage.getItem('login')) ){
 
-  const onInputChange = (e) => {
-    console.log(e.target.files[0]);
-    setImage(e.target.files[0]);
-  };
-
-  const getImage = async () => {
-
-    const result = await axios.get("http://localhost:5000/get-image")
-    console.log(result);
-    setAllImage(result?.data?.data);
+  dispatch(logIn(true))
+  setError(false)
 
 
-  };
+}else{
+  
+  dispatch(logIn(false))
+}
+
+
+},[mode, localStorage.getItem('password'), localStorage.getItem('login')])
+
+
+
+
+const handleClick =()=> {
+  
+
+if(password ==="georgia111" && login==='Giorgi'){
+setMode(true)
+dispatch(logIn(true))
+localStorage.setItem("login", 'Giorgi')
+localStorage.setItem("password", 'georgia111')
+setLogin('')
+setPassword('')
+
+
+}else{
+  setError(true)
+}
+
+
+}
+
+
+
+
+
+
+const handleClickLogOut =()=> {
+
+  setMode(false)
+  localStorage.clear()
+  dispatch(logIn(false))
+}
 
   return (
-    <div>
-  <p className={s.header}>Admin Page</p>
+    <>
+  {!isLogin ? <div className={s.container}>
+      <p className={s.text}>Admin </p>
 
-      <Navbar />
+    {error && <p className={s.error}>Login or password is incorrect</p>}
+      <input className={s.input} placeholder="login" value={login} onChange={(e)=>setLogin(e.target.value)}/>
+     
+      <input className={s.input} placeholder="password"   value={password} onChange={(e)=>setPassword(e.target.value)} />
 
-   
-         
+      <button className={s.button} onClick={handleClick}>Log In</button>
+    </div>:
 
+     <div>
+      <p className={s.log} onClick={handleClickLogOut}>Log out</p>
 
-    </div>
+    <p className={s.header}>Admin Page</p>
+
+        <Navbar />
+
+      </div> }
+      </>
   );
 }
 export default App;

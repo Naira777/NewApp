@@ -1,16 +1,13 @@
 
 import axios from "axios";
-import  { instanceGet } from "../axios/axiosGet";
-import axiosPost from "../axios/axiosPost";
 import {createAsyncThunk} from "@reduxjs/toolkit";
-
 
 
 export const API = Object.freeze({   
     getBrands: createAsyncThunk(
         'get/brands',
         async () => {
-            return await  axios.get("http://localhost:5000/get-image")
+            return await  axios.get(`${process.env.REACT_APP_BASE_URL}/get-image`)
         }
     ),
 
@@ -18,7 +15,7 @@ export const API = Object.freeze({
         'post/brands',
         async (data) => {                        
             return await axios.post(
-                "http://localhost:5000/upload-image",
+                `${process.env.REACT_APP_BASE_URL}/upload-image`,
                 data,
                 {
                   headers: { "Content-Type": "multipart/form-data" },
@@ -29,7 +26,8 @@ export const API = Object.freeze({
     deleteBrand: createAsyncThunk(
         'delete/brands',
         async (id) => {                        
-            return axios.delete(`http://localhost:5000/delete-image/${id}`, )
+            return axios.delete(`${process.env.REACT_APP_BASE_URL}/delete-image/${id}`, )
+          
         }
     ),
 
@@ -38,7 +36,7 @@ export const API = Object.freeze({
     getProducts: createAsyncThunk(
         'get/products',
         async () => {
-            return await  axios.get("http://localhost:5000/get-products")
+            return await  axios.get(`http://localhost:5000/get-products`)
         }
     ),
 
@@ -46,7 +44,7 @@ export const API = Object.freeze({
         'post/products',
         async (data) => {                        
             return await axios.post(
-                "http://localhost:5000/upload-product",
+                `${process.env.REACT_APP_BASE_URL}/upload-product`,
                 data,
                 {
                   headers: { "Content-Type": "multipart/form-data" },
@@ -57,7 +55,7 @@ export const API = Object.freeze({
     deleteProduct: createAsyncThunk(
         'delete/products',
         async (id) => {                        
-            return axios.delete(`http://localhost:5000/delete-product/${id}`, )
+            return axios.delete(`${process.env.REACT_APP_BASE_URL}/delete-product/${id}`,)
         }
     ),
 
@@ -65,7 +63,7 @@ export const API = Object.freeze({
 getNews: createAsyncThunk(
     'get/news',
     async () => {
-        return await  axios.get("http://localhost:5000/get-news")
+        return await  axios.get(`${process.env.REACT_APP_BASE_URL}/get-news`)
     }
 ),
 
@@ -73,7 +71,7 @@ createNews: createAsyncThunk(
     'post/news',
     async (data) => {                        
         return await axios.post(
-            "http://localhost:5000/upload-news",
+            `${process.env.REACT_APP_BASE_URL}/upload-news`,
             data,
             {
               headers: { "Content-Type": "multipart/form-data" },
@@ -84,7 +82,7 @@ createNews: createAsyncThunk(
 deleteNews: createAsyncThunk(
     'delete/news',
     async (id) => {                        
-        return axios.delete(`http://localhost:5000/delete-news/${id}`, )
+        return axios.delete(`${process.env.REACT_APP_BASE_URL}/delete-news/${id}`, )
     }
 ),
 
