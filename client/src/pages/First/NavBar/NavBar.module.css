@@ -6,7 +6,7 @@
 }
 
 .link {
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 600;
   border-line: none;
   opacity: 0.7;
@@ -36,7 +36,7 @@
 
 @media screen and (max-width: 980px) {
   .link {
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 600;
     width: 90px;
     text-align: center;

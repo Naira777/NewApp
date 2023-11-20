@@ -29,7 +29,7 @@ function HomePage() {
   return (
 
 
-    <div >
+    <div style={{ 'overflowX':'hidden' }} >
 
       <First handleClick1={handleClickContact} 
       handleClick2={handleClickAbout}  

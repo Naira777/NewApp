@@ -13,7 +13,7 @@ const Brands = () => {
   const dispatch = useDispatch();
   const { brands } = useSelector((state) => state.brands);
   const { t } = useTranslation();
-console.log(brands)
+
   const [height, width] = useWindowSize();
 
   useEffect(() => {

@@ -9,6 +9,7 @@ const ProductsPage = ({ ref1 }) => {
   const { language } = useSelector((state) => state.products);
   const { t } = useTranslation();
 
+
   return (
     <div className={s.container} ref={ref1}>
       <p className={s.header}>{t("ourproducts")}</p>
@@ -16,11 +17,11 @@ const ProductsPage = ({ ref1 }) => {
       <div className={s.box}>
         {data?.map((item, id) => {
           let newItem;
-          if (language === "") {
+          if (!language) {
             newItem = item?.translations[2];
           } else {
             newItem =
-              language === "en"
+            language === "en"
                 ? item.translations[1]
                 : language === "ge"
                 ? item.translations[2]

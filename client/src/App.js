@@ -22,6 +22,7 @@ const isLogin =localStorage.getItem("password") && localStorage.getItem("login")
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route exact path="/" element={<HomePage/>} />
         <Route path="/home" element={<HomePage />} />
         <Route path="/admin" element={<Admin />} />
 

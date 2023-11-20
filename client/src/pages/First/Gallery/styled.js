@@ -32,7 +32,7 @@ border-radius:30px;
 
  @media (max-width: 500px) {
   
- margin-top:-20px;
+ margin-top:-5px;
 
 }
  @media (max-width: 330px) {
