@@ -9,15 +9,20 @@ const NavBar = ({ handleClick1, handleClick2, handleClick3 }) => {
 
   return (
     <div className={s.box}>
-      <p className={s.link}>
+      
+     
         <NavLink
           to={"/"}
           activeStyle={{ color: "#FCA83C" }}
           style={{ color: "brown", textDecoration: "none" }}
-        >
-          {t("home")}
+        > 
+        <p className={s.link}>
+
+
+          {t("home")} 
+             </p>
         </NavLink>
-      </p>
+  
 
       {param == "/" ? (
         <p className={s.link}>

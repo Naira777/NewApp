@@ -24,10 +24,15 @@ const ProductsListPage = () => {
   useEffect(() => {
     dispatch(API.getProducts());
 
+    if(language === ''){
+
+      setCatname(getProductCategoryName(data, filtertype)?.translations[2]?.name); 
+    }else{
+
     language === "en" && setCatname(getProductCategoryName(data, filtertype)?.translations[1]?.name);
     language === "ru" && setCatname(getProductCategoryName(data, filtertype)?.translations[0]?.name);
     language === "ge" && setCatname(getProductCategoryName(data, filtertype)?.translations[2]?.name);
-
+    }
 
     setProductsList(products?.filter((item) => item.categoryId === filtertype));
 

@@ -11,7 +11,7 @@ const ProductItemsPage = () => {
   const { language } = useSelector((state) => state.products);
   const [newData, setNewData] = useState([]);
   const { filtertype } = useParams();
-  const {t} = useTranslation();
+  const { t } = useTranslation();
 
   useEffect(() => {
     setNewData(filterById(data, filtertype));
@@ -21,32 +21,37 @@ const ProductItemsPage = () => {
     <MainLayout>
       {" "}
       <div className={s.box}>
-        {newData.length >= 0 && newData[0]?.sections?.map((item, index) => {
-          const newItem =
-            language === "en"
-              ? item?.translations[1]
-              : language === "ge"
-              ? item?.translations[2]
-              : item?.translations[0];
+        {newData.length >= 0 &&
+          newData[0]?.sections?.map((item, index) => {
+            let newItem;
+            if (language === "") {
+              newItem = item?.translations[2];
+            } else {
+              newItem =
+                language === "en"
+                  ? item?.translations[1]
+                  : language === "ge"
+                  ? item?.translations[2]
+                  : item?.translations[0];
+            }
+            return (
+              <div key={item.id} className={s.boxAll}>
+                <p className={s.header}> {newItem?.name} </p>
+                <div className={s.box1}>
+                  {item?.image && (
+                    <img
+                      className={s.img}
+                      src={require(`../../../DataImages/${item?.image}`)}
+                    />
+                  )}
 
-          return (
-            <div key={item.id} className={s.boxAll}>
-              <p className={s.header}> {newItem?.name} </p>
-              <div className={s.box1}>
-                {item?.image && (
-                  <img
-                    className={s.img}
-                    src={require(`../../../DataImages/${item?.image}`)}
-                  />
-                )}
-
-                <NavLink className={s.button} to={`/products/${item?.id}`}>
-                {t('models')}
-                </NavLink>
+                  <NavLink className={s.button} to={`/products/${item?.id}`}>
+                    {t("models")}
+                  </NavLink>
+                </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
       </div>
     </MainLayout>
   );

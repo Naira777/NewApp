@@ -7,21 +7,25 @@ import { useTranslation } from "react-i18next";
 
 const ProductsPage = ({ ref1 }) => {
   const { language } = useSelector((state) => state.products);
-  const {t} = useTranslation();
+  const { t } = useTranslation();
 
   return (
     <div className={s.container} ref={ref1}>
-      <p className={s.header}>{t('ourproducts')}</p>
+      <p className={s.header}>{t("ourproducts")}</p>
 
       <div className={s.box}>
         {data?.map((item, id) => {
-          const newItem =
-            language === "en"
-              ? item.translations[1]
-              : language === "ge"
-              ? item.translations[2]
-              : item.translations[0];
-
+          let newItem;
+          if (language === "") {
+            newItem = item?.translations[2];
+          } else {
+            newItem =
+              language === "en"
+                ? item.translations[1]
+                : language === "ge"
+                ? item.translations[2]
+                : item.translations[0];
+          }
           return (
             <Product
               key={item.id}
