@@ -44,10 +44,6 @@ start()
 require("./models/imageDetails");
 const imageModel = require("./models/imageDetails");
 
-// app.get("/", async (req, res) => {
-//   res.send("Success!!!!!!");
-// });
-
 
 
 //////////////////////////////////////////////////////////////
