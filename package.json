@@ -33,6 +33,10 @@
     "react-router-dom": "^6.15.0",
     "webpack-dev-middleware": "^6.1.1"
   },
+  "engines": {
+    "node": ">=16.20.1"
+  },
+  
   "devDependencies": {
     "concurrently": "^8.2.1",
     "cross-env": "^7.0.3",
