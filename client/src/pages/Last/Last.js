@@ -34,9 +34,9 @@ const Last = () => {
           </svg>
           <Styled.Text>www.ourwebsite.am</Styled.Text>
         </Styled.B>
-<a href='https://facebook.com'> 
+{/* <a href='https://facebook.com'> 
   <Styled.img src={'https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/facebook-square-color-icon.png'} />
-  </a> 
+  </a>  */}
 
   <a href='https://instagram.com'>   
     <Styled.img src={'https://cdn2.iconfinder.com/data/icons/social-media-2285/512/1_Instagram_colored_svg_1-128.png'} />
