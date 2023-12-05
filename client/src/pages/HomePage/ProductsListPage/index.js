@@ -20,7 +20,7 @@ const ProductsListPage = () => {
   const { products } = useSelector((state) => state.products);
   const { language } = useSelector((state) => state.products);
   const dispatch = useDispatch();
-
+  console.log('Lang',language)
   useEffect(() => {
     dispatch(API.getProducts());
 

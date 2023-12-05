@@ -15,9 +15,7 @@ function BrandAdminPage() {
     dispatch(API.getBrands());
   }, []);
 
-
-
-  
+ 
 
   const submitImage = async (e) => {
     e.preventDefault();
@@ -25,15 +23,16 @@ function BrandAdminPage() {
       const formData = new FormData();
       formData.append("image", image);
 
-      dispatch(API.createBrand(formData));
-      dispatch(API.getBrands());
-     
+      dispatch(API.createBrand(formData));    
+      
 
     }
+
+    dispatch(API.getBrands());
   };
 
   const onInputChange = (e) => {
-    console.log(e.target.files[0]);
+    
     setImage(e.target.files[0]);
   };
 
@@ -43,7 +42,6 @@ function BrandAdminPage() {
   };
 
   const handleClickLogOut =()=> {
-
  
     localStorage.clear()
     dispatch(logIn(false))
@@ -62,14 +60,14 @@ function BrandAdminPage() {
         </form>
       </div>
 
-      <p className={s.header1}> Brands</p>
+      <p className={s.header1}> Brands </p>
       <div className={s.box1}>
-        {brands?.map((data) => {
+        {brands?.length>0 && brands?.map((data) => {
           return (
-            <div>
+            <div key={data._id}>
               <img
-                className={s.image}
-                src={require(`../../../images/${data.image}`)}
+                className={s.image}              
+                // src={require(`../../../images/${data?.image}`)}
               />
               <div
                 className={s.addBrand}

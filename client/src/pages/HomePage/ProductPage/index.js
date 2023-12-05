@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect} from "react";
 import s from "./index.module.css";
 import Product from "./Product";
 import { data } from "../../../data";
@@ -8,6 +8,13 @@ import { useTranslation } from "react-i18next";
 const ProductsPage = ({ ref1 }) => {
   const { language } = useSelector((state) => state.products);
   const { t } = useTranslation();
+  const [lang, setLang]= useState(localStorage.getItem('lang')? localStorage.getItem('lang') : 'ge')
+
+
+
+  useEffect(() => {
+    setLang(localStorage.getItem('lang'))
+  }, [language, localStorage.getItem('lang')]);
 
 
   return (
@@ -17,13 +24,13 @@ const ProductsPage = ({ ref1 }) => {
       <div className={s.box}>
         {data?.map((item, id) => {
           let newItem;
-          if (!language) {
+          if (!lang) {
             newItem = item?.translations[2];
           } else {
             newItem =
-            language === "en"
+            lang === "en"
                 ? item.translations[1]
-                : language === "ge"
+                : lang === "ge"
                 ? item.translations[2]
                 : item.translations[0];
           }

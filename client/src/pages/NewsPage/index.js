@@ -39,7 +39,7 @@ export default function NewsPage() {
   return (
     <MainLayout>
       <p className={s.header1}>{t('ournews')}</p>
-      {newArr?.map((item, index) => {
+      {newArr?.length>0 && newArr?.map((item, index) => {
          if (index <= count - 1) {
         const newItem =
           language === "en"
@@ -55,7 +55,7 @@ export default function NewsPage() {
             <div className={s.box}>
               <img
                 className={s.img}
-                src={require(`../../images/${item?.image}`)}
+                src={require(`../../images/${item.image}`)}
               />
               <p className={s.article}>{newItem.article}</p>
             </div>

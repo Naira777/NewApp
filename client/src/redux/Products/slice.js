@@ -5,7 +5,7 @@ const ProductSlice = createSlice({
   name: "Products",
   initialState: {
    products: [], 
-   language: '',
+   language: 'ge',
    isLogin: false,
    
   },

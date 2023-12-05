@@ -9,13 +9,22 @@ import { useTranslation } from "react-i18next";
 
 const ProductItemsPage = () => {
   const { language } = useSelector((state) => state.products);
+  const [lang, setLang]= useState(localStorage.getItem('lang')? localStorage.getItem('lang') : 'ge')
   const [newData, setNewData] = useState([]);
   const { filtertype } = useParams();
   const { t } = useTranslation();
 
+
   useEffect(() => {
     setNewData(filterById(data, filtertype));
   }, [filtertype]);
+
+
+  useEffect(() => {
+    setLang(localStorage.getItem('lang'))
+  }, [language, localStorage.getItem('lang')]);
+
+
 
   return (
     <MainLayout>
@@ -24,13 +33,13 @@ const ProductItemsPage = () => {
         {newData.length >= 0 &&
           newData[0]?.sections?.map((item, index) => {
             let newItem;
-            if (language === "") {
+            if (lang === "") {
               newItem = item?.translations[2];
             } else {
               newItem =
-                language === "en"
+                lang === "en"
                   ? item?.translations[1]
-                  : language === "ge"
+                  : lang === "ge"
                   ? item?.translations[2]
                   : item?.translations[0];
             }

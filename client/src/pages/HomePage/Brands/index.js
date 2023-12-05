@@ -35,10 +35,10 @@ const Brands = () => {
       {brands?.length>0 &&  <Swiper spaceBetween={10} {...settings} slidesPerView={width / 270}>
           {brands?.map((data, id) => {
             return (
-              <SwiperSlide key={id}>
+              <SwiperSlide key={data._id}>
                 <img
                   className={s.image}
-                  src={require(`../../../images/${data?.image}`)}
+                  // src={require(`../../../images/${data.image}`)}
                 />
               </SwiperSlide>
             );
