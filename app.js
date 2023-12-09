@@ -16,6 +16,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+
 async function start() {
   try {
     await mongoose.connect(process.env.MONGO_URI, {
@@ -158,9 +159,16 @@ app.post("/upload-news", upload.single("news"), async (req, res) => {
       translations: arr,
     });
 
-    res.json({ status: "ok" });
+    // res.json({ status: "ok" });
+    res.json({ filename: imageName, filepath: `/images/${imageName}` });
+
+
   } catch (error) {
+
+
     res.json({ status: error });
+
+
   }
 });
 
@@ -289,6 +297,7 @@ app.post("/send", async (req, res) => {
 });
 
 const __dirname1 = path.resolve();
+app.use('/uploads', express.static(path.join(__dirname1, 'images')));
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname1, "/client/build")));
